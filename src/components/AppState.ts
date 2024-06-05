@@ -46,10 +46,18 @@ export class AppState extends Model<IAppState> {
 
 	// Удаление id товара из заказа
 	removeOrderID(item: IProduct) {
+		const index = this.order.items.indexOf(item.id);
+		if (index >= 0) {
+			this.order.items.splice(index, 1);
+		}
 	}
 
 	// Удаление товара из корзины
 	removeFromBasket(item: IProduct) {
+		const index = this.basket.indexOf(item);
+		if (index >= 0) {
+			this.basket.splice(index, 1);
+		}
 	}
 
 	// Очистка корзины
